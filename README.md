@@ -1,13 +1,21 @@
+```
+   _____ _            _    
+  / ____| |          | |   
+ | (___ | | __ _  ___| | __
+  \___ \| |/ _` |/ __| |/ /
+  ____) | | (_| | (__|   < 
+ |_____/|_|\__,_|\___|_|\_\
+
+```
+
 # Slack API library [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/cleentfaar/slack/blob/master/LICENSE.md)
 
 Access your Slack Team's API through PHP objects.
 
-[![Build Status](https://img.shields.io/travis/cleentfaar/slack/master.svg?style=flat-square)](https://travis-ci.org/cleentfaar/slack)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/cleentfaar/slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/cleentfaar/slack/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/cleentfaar/slack.svg?style=flat-square)](https://scrutinizer-ci.com/g/cleentfaar/slack)
-[![Latest Version](https://img.shields.io/github/release/cleentfaar/slack.svg?style=flat-square)](https://github.com/cleentfaar/slack/releases)
-[![Total Downloads](https://img.shields.io/packagist/dt/cleentfaar/slack.svg?style=flat-square)](https://packagist.org/packages/cleentfaar/slack)
+[![Latest Version](https://img.shields.io/github/release/bluora/php-slack-api.svg?style=flat-square)](https://github.com/bluora/php-slack-api/releases)
+[![Total Downloads](https://img.shields.io/packagist/dt/bluora/php-slack-api.svg?style=flat-square)](https://packagist.org/packages/bluora/php-slack-api)
 
+This package has been adapted from [cleentfaar/slack](https://github.com/cleentfaar/slack) by H&H|Digital, an Australian botique developer. Visit us at [hnh.digital](http://hnh.digital).
 
 ### Documentation
 
@@ -63,8 +71,7 @@ The following methods have not yet been implemented, why not contribute and add 
 
 ### Related packages
 
-- [Slack CLI](https://github.com/cleentfaar/slack-cli) - CLI application for all of the Slack API methods.
-- [SlackBundle](https://github.com/cleentfaar/CLSlackBundle) - Symfony Bundle providing integration with this library package.
+- [Slack for Laravel](https://github.com/bluora/laravel-slack-api) - Laravel integration with this library package.
 
 
 ### Attributions
