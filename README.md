@@ -7,13 +7,11 @@
  |_____/|_|\__,_|\___|_|\_\
 
 ```
-
-# Slack API library [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/cleentfaar/slack/blob/master/LICENSE.md)
-
 Access your Slack Team's API through PHP objects.
 
 [![Latest Version](https://img.shields.io/github/release/bluora/php-slack-api.svg?style=flat-square)](https://github.com/bluora/php-slack-api/releases)
 [![Total Downloads](https://img.shields.io/packagist/dt/bluora/php-slack-api.svg?style=flat-square)](https://packagist.org/packages/bluora/php-slack-api)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/cleentfaar/slack/blob/master/LICENSE.md)
 
 This package has been adapted from [cleentfaar/slack](https://github.com/cleentfaar/slack) by H&H|Digital, an Australian botique developer. Visit us at [hnh.digital](http://hnh.digital).
 
