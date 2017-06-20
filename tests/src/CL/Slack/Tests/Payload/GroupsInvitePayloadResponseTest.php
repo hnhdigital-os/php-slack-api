@@ -25,7 +25,8 @@ class GroupsInvitePayloadResponseTest extends AbstractPayloadResponseTestCase
     public function createResponseData()
     {
         return [
-            'group' => $this->createGroup(),
+            'group'            => $this->createGroup(),
+            'already_in_group' => true,
         ];
     }
 
@@ -38,5 +39,6 @@ class GroupsInvitePayloadResponseTest extends AbstractPayloadResponseTestCase
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
         $this->assertGroup($responseData['group'], $payloadResponse->getGroup());
+        $this->assertEquals($responseData['already_in_group'], $payloadResponse->isAlreadyInGroup());
     }
 }

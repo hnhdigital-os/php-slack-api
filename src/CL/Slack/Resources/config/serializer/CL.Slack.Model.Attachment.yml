@@ -2,15 +2,31 @@ CL\Slack\Model\Attachment:
     properties:
         title:
             type: string
+        titleLink:
+             type: string
         fallback:
             type: string
-        preText:
-            type: string
         imageUrl:
+            type: string
+        authorLink:
+            type: string
+        authorIcon:
+            type: string
+        preText:
             type: string
         text:
             type: string
         color:
             type: string
+        fallback:
+            type: string
+        callbackId:
+            type: string
         fields:
             type: ArrayCollection<CL\Slack\Model\AttachmentField>
+        actions:
+            type: ArrayCollection<CL\Slack\Model\AttachmentAction>
+        mrkdwnIn:
+            type: array
+        footer:
+            type: string

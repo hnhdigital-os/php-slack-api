@@ -73,6 +73,14 @@ class SimpleMessage extends AbstractModel
     {
         return $this->type;
     }
+    
+    /**
+     * @return null|string The subtype of message
+     */
+    public function getSubtype()
+    {
+        return $this->subtype;
+    }
 
     /**
      * @return SimpleChannel
@@ -106,5 +114,21 @@ class SimpleMessage extends AbstractModel
     public function getText()
     {
         return $this->text;
+    }
+
+    /**
+     * @return array of attachments
+     */
+    public function getAttachments()
+    {
+        return $this->attachments;
+    }
+
+    /**
+     * @return boolean wether or not this message has attachments
+     */
+    public function hasAttachments()
+    {
+        return count($this->attachments) > 0;
     }
 }

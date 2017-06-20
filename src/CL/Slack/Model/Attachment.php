@@ -71,6 +71,11 @@ class Attachment extends AbstractModel
     private $fallback;
 
     /**
+     * @var string
+     */
+    private $callbackId;
+
+    /**
      * @var AttachmentField[]|ArrayCollection
      */
     private $fields;
@@ -84,6 +89,11 @@ class Attachment extends AbstractModel
      * @var Array
      */
     private $mrkdwnIn;
+    
+    /**
+     * @var string
+     */
+    private $footer;
 
     public function __construct()
     {
@@ -206,6 +216,22 @@ class Attachment extends AbstractModel
     }
 
     /**
+     * @param string $callbackId Required value for interactive messages.
+     */
+    public function setCallbackId($callbackId)
+    {
+        $this->callbackId = $callbackId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCallbackId()
+    {
+        return $this->callbackId;
+    }
+
+    /**
      * @param string|null $preText Optional text that should appear above the formatted data.
      */
     public function setPreText($preText = null)
@@ -299,5 +325,21 @@ class Attachment extends AbstractModel
     public function getMrkdwnIn()
     {
     	return $this->mrkdwnIn;
+    }
+
+    /**
+     * @param string|null $text Optional footer that should appear within the attachment.
+     */
+    public function setFooter($footer = null)
+    {
+        $this->footer = $footer;
+    }
+
+    /**
+     * @return string|null Optional footer that should appear within the attachment.
+     */
+    public function getFooter()
+    {
+        return $this->footer;
     }
 }

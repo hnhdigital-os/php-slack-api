@@ -1,0 +1,10 @@
+CL\Slack\Model\ActionConfirm:
+    properties:
+        title:
+            type: string
+        text:
+            type: string
+        ok_text:
+            type: string
+        dismiss_text:
+            type: string
