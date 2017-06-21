@@ -83,6 +83,8 @@ class AttachmentAction extends AbstractModel
     {
         $this->setText($text)
             ->setType(self::TYPE_BUTTON);
+
+        return $this;
     }
 
     /**
