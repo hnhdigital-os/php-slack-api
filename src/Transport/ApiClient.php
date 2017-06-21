@@ -205,6 +205,10 @@ class ApiClient implements ApiClientInterface
             throw new SlackException('Failed to send data to the Slack API', null, $e);
         }
 
+        if (!is_null($this->endpoint)) {
+            return [];
+        }
+
         try {
             $responseData = json_decode($response->getBody()->getContents(), true);
             if (!is_array($responseData)) {
@@ -230,20 +234,32 @@ class ApiClient implements ApiClientInterface
      */
     private function createRequest($method, array $payload)
     {
-        $endpoint = self::API_BASE_URL . $method;
-
         // Override the endpoint for this payload.
         if (!is_null($this->endpoint)) {
-            $endpoint = $this->endpoint;
+            $token = $payload['token'];
+            unset($payload['token']);
+
+            // Convert payload back to an array.
+            foreach ($payload as &$value) {
+                $value = json_decode($value);
+            }
+
+            // Encode payload.
+            $payload = json_encode($payload, JSON_UNESCAPED_UNICODE);
+
+            return new Request(
+                'POST',
+                $this->endpoint,
+                ['Content-Type' => 'application/json'],
+                $payload
+            );
         }
 
-        $request = new Request(
+        return new Request(
             'POST',
-            $endpoint,
+            self::API_BASE_URL . $method,
             ['Content-Type' => 'application/x-www-form-urlencoded'],
             http_build_query($payload)
         );
-
-        return $request;
     }
 }
