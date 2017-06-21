@@ -12,7 +12,7 @@ CL\Slack\Model\Attachment:
             type: string
         authorIcon:
             type: string
-        preText:
+        pretext:
             type: string
         text:
             type: string

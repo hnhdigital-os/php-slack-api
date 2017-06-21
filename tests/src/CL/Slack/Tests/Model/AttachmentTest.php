@@ -28,7 +28,7 @@ class AttachmentTest extends AbstractModelTest
             'color' => '#123456',
             'fallback' => 'fallback text',
             'text' => 'normal text',
-            'pre_text' => 'pre text',
+            'pretext' => 'pre text',
             'fields' => [
                 [
                     'title' => 'foo',
@@ -56,7 +56,7 @@ class AttachmentTest extends AbstractModelTest
     {
         $this->assertEquals($expectedData['color'], $actualModel->getColor());
         $this->assertEquals($expectedData['fallback'], $actualModel->getFallback());
-        $this->assertEquals($expectedData['pre_text'], $actualModel->getPreText());
+        $this->assertEquals($expectedData['pretext'], $actualModel->getPretext());
         $this->assertEquals($expectedData['text'], $actualModel->getText());
         $this->assertEquals($expectedData['fields'][0]['title'], $actualModel->getFields()->first()->getTitle());
         $this->assertEquals($expectedData['fields'][0]['value'], $actualModel->getFields()->first()->getValue());

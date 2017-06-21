@@ -49,7 +49,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTestCase
         $fakeAttachment->setColor('the color');
         $fakeAttachment->setFallback('the fallback');
         $fakeAttachment->setImageUrl('the image url');
-        $fakeAttachment->setPreText('this is...');
+        $fakeAttachment->setPretext('this is...');
         $fakeAttachment->setText('my attachment');
         $fakeAttachment->setAuthorIcon(':skull:');
         $fakeAttachment->setAuthorName('the author');
@@ -93,7 +93,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTestCase
                     'author_name' => $attachment->getAuthorName(),
                     'author_link' => $attachment->getAuthorLink(),
                     'author_icon' => $attachment->getAuthorIcon(),
-                    'pre_text' => $attachment->getPreText(),
+                    'pretext' => $attachment->getPretext(),
                     'text' => $attachment->getText(),
                     'color' => $attachment->getColor(),
                     'fallback' => $attachment->getFallback(),
