@@ -93,6 +93,8 @@ class AttachmentAction extends AbstractModel
     public function defaultStyle()
     {
         $this->setStyle(self::STYLE_DEFAULT);
+
+        return $this;
     }
 
     /**
@@ -103,6 +105,8 @@ class AttachmentAction extends AbstractModel
     public function primaryStyle()
     {
         $this->setStyle(self::STYLE_PRIMARY);
+
+        return $this;
     }
 
     /**
@@ -113,6 +117,8 @@ class AttachmentAction extends AbstractModel
     public function dangerStyle()
     {
         $this->setStyle(self::STYLE_DANGER);
+
+        return $this;
     }
 
     /**
