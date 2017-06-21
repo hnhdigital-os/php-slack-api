@@ -96,6 +96,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setChannel($channel)
     {
         $this->channel = $channel;
+
+        return $this;
     }
 
     /**
@@ -114,6 +116,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setText($text)
     {
         $this->text = $text;
+
+        return $this;
     }
 
     /**
@@ -132,6 +136,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setMessage($message)
     {
         $this->setText($message);
+
+        return $this;
     }
 
     /**
@@ -150,6 +156,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setUsername($username)
     {
         $this->username = $username;
+
+        return $this;
     }
 
     /**
@@ -166,6 +174,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setAsUser($asUser)
     {
         $this->asUser = $asUser;
+
+        return $this;
     }
 
     /**
@@ -184,6 +194,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setParse($parse)
     {
         $this->parse = $parse;
+
+        return $this;
     }
 
     /**
@@ -210,6 +222,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
         }
 
         $this->iconEmoji = $iconEmoji;
+
+        return $this;
     }
 
     /**
@@ -226,6 +240,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setIconUrl($iconUrl)
     {
         $this->iconUrl = $iconUrl;
+
+        return $this;
     }
 
     /**
@@ -247,6 +263,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setUnfurlLinks($unfurlLinks)
     {
         $this->unfurlLinks = $unfurlLinks;
+
+        return $this;
     }
 
     /**
@@ -265,6 +283,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setUnfurlMedia($unfurlMedia)
     {
         $this->unfurlMedia = $unfurlMedia;
+
+        return $this;
     }
 
     /**
@@ -281,6 +301,8 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     public function setLinkNames($linkNames)
     {
         $this->linkNames = $linkNames;
+
+        return $this;
     }
 
     /**
@@ -304,9 +326,19 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     /**
      * @param Attachment $attachment
      */
+    public function attach(Attachment $attachment)
+    {
+        return $this->addAttachment($attachment);
+    }
+
+    /**
+     * @param Attachment $attachment
+     */
     public function addAttachment(Attachment $attachment)
     {
         $this->attachments->add($attachment);
+
+        return $this;
     }
 
     /**
