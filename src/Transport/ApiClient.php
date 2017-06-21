@@ -55,6 +55,11 @@ class ApiClient implements ApiClientInterface
     private $token;
 
     /**
+     * @var string|null
+     */
+    private $endpoint;
+
+    /**
      * @var PayloadSerializer
      */
     private $payloadSerializer;
@@ -85,10 +90,49 @@ class ApiClient implements ApiClientInterface
         EventDispatcherInterface $eventDispatcher = null
     ) {
         $this->token = $token;
+        $this->endpoint = null;
         $this->payloadSerializer = new PayloadSerializer();
         $this->payloadResponseSerializer = new PayloadResponseSerializer();
         $this->client = $client ?: new Client();
         $this->eventDispatcher = $eventDispatcher ?: new EventDispatcher();
+    }
+
+    /**
+     * Get the endpoint for this payload.
+     *
+     * @param string $endpoint
+     *
+     * @return void
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
+    }
+
+    /**
+     * Set the endpoint for this payload.
+     *
+     * @param string $endpoint
+     *
+     * @return void
+     */
+    public function setEndpoint($endpoint)
+    {
+        $this->endpoint = $endpoint;
+
+        return $this;
+    }
+
+    /**
+     * Reset the endpoint for this payload.
+     *
+     * @return void
+     */
+    public function resetEndpoint()
+    {
+        $this->endpoint = null;
+
+        return $this;
     }
 
     /**
@@ -123,6 +167,8 @@ class ApiClient implements ApiClientInterface
     public function addRequestListener($callable)
     {
         $this->eventDispatcher->addListener(self::EVENT_REQUEST, $callable);
+
+        return $this;
     }
 
     /**
@@ -131,6 +177,8 @@ class ApiClient implements ApiClientInterface
     public function addResponseListener($callable)
     {
         $this->eventDispatcher->addListener(self::EVENT_RESPONSE, $callable);
+
+        return $this;
     }
 
     /**
@@ -182,9 +230,16 @@ class ApiClient implements ApiClientInterface
      */
     private function createRequest($method, array $payload)
     {
+        $endpoint = self::API_BASE_URL . $method;
+
+        // Override the endpoint for this payload.
+        if (!is_null($this->endpoint)) {
+            $endpoint = $this->endpoint;
+        }
+
         $request = new Request(
             'POST',
-            self::API_BASE_URL . $method,
+            $endpoint,
             ['Content-Type' => 'application/x-www-form-urlencoded'],
             http_build_query($payload)
         );
