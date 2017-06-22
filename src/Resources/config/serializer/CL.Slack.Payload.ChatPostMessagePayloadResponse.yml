@@ -4,3 +4,5 @@ CL\Slack\Payload\ChatPostMessagePayloadResponse:
             type: string
         channel:
             type: string
+        message:
+            type: array
