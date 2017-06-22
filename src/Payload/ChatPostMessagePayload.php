@@ -35,22 +35,22 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     /**
      * @var string
      */
-    private $username;
+    private $parse;
 
     /**
      * @var bool
      */
-    private $asUser;
+    private $linkNames;
+
+    /**
+     * @var Attachment[]|ArrayCollection
+     */
+    private $attachments;
 
     /**
      * @var string
      */
-    private $iconEmoji;
-
-    /**
-     * @var string
-     */
-    private $iconUrl;
+    private $attachmentsJson;
 
     /**
      * @var bool
@@ -63,24 +63,34 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     private $unfurlMedia;
 
     /**
+     * @var string
+     */
+    private $username;
+
+    /**
      * @var bool
      */
-    private $linkNames;
+    private $asUser;
 
     /**
      * @var string
      */
-    private $parse;
-
-    /**
-     * @var Attachment[]|ArrayCollection
-     */
-    private $attachments;
+    private $iconUrl;
 
     /**
      * @var string
      */
-    private $attachmentsJson;
+    private $iconEmoji;
+
+    /**
+     * @var string
+     */
+    private $threadTs;
+
+    /**
+     * @var string
+     */
+    private $replyBroadcast;
 
     public function __construct()
     {
@@ -89,9 +99,13 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
 
     /**
      * Sets the channel to send the message to.
-     * Can be a public channel, private group, IM channel, encoded ID, or a name.
+     * Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name.
      *
      * @param string $channel
+     *
+     * @return ChatPostMessagePayload
+     *
+     * @see https://api.slack.com/methods/chat.postMessage#channels
      */
     public function setChannel($channel)
     {
@@ -101,7 +115,7 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * @return string The channel to send the message to.
+     * @return string
      */
     public function getChannel()
     {
@@ -109,9 +123,14 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * @param string $text Actual message to send.
+     * Text of the message to send. See below for an explanation of formatting.
+     * This field is usually required, unless you're providing only attachments instead.
      *
-     * @see https://api.slack.com/docs/formatting for an explanation of formatting.
+     * @param string $text Actual text to send.
+     *
+     * @return ChatPostMessagePayload
+     *
+     * @see https://api.slack.com/methods/chat.postMessage#formatting
      */
     public function setText($text)
     {
@@ -121,7 +140,7 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * @return string Actual message to send.
+     * @return string Actual text to send.
      */
     public function getText()
     {
@@ -129,67 +148,13 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * @param string $message
+     * Change how messages are treated. Defaults to none. 
      *
-     * @deprecated Will be removed soon, use `setText()` instead
-     */
-    public function setMessage($message)
-    {
-        $this->setText($message);
-
-        return $this;
-    }
-
-    /**
-     * @return string
+     * @param string $parse full, none
      *
-     * @deprecated Will be removed soon, use `getText()` instead
-     */
-    public function getMessage()
-    {
-        return $this->getText();
-    }
-
-    /**
-     * @param string $username Name of bot that will send the message (can be any name you want).
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * @return string Name of the bot that will send the message.
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param bool $asUser Pass message as authorized user
-     */
-    public function setAsUser($asUser)
-    {
-        $this->asUser = $asUser;
-
-        return $this;
-    }
-
-    /**
-     * @return bool Returns true if message will be sent as authorized user
-     */
-    public function getAsUser()
-    {
-        return $this->asUser;
-    }
-
-    /**
-     * @param string $parse Change how messages are treated.
+     * @return ChatPostMessagePayload
      *
-     * @see https://api.slack.com/docs/formatting
+     * @see https://api.slack.com/methods/chat.postMessage#formatting
      */
     public function setParse($parse)
     {
@@ -199,7 +164,7 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * @return string Change how messages are treated.
+     * @return string
      */
     public function getParse()
     {
@@ -207,58 +172,73 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * Sets the emoji to use as the icon for this message (overrides icon URL).
+     * Find and link channel names and usernames.
      *
-     * You can use one of Slack's emoji's or upload your own.
+     * @param bool $linkNames
      *
-     * @see https://{YOURSLACKTEAMHERE}.slack.com/customize/emoji
-     *
-     * @param string|null $iconEmoji Emoji to use as the icon for this message (overrides icon URL).
+     * @return ChatPostMessagePayload
      */
-    public function setIconEmoji($iconEmoji)
+    public function setLinkNames($linkNames)
     {
-        if (substr($iconEmoji, 0, 1) !== ':') {
-            $iconEmoji = sprintf(':%s:', $iconEmoji);
-        }
-
-        $this->iconEmoji = $iconEmoji;
+        $this->linkNames = $linkNames;
 
         return $this;
     }
 
     /**
-     * @return string|null Emoji to use as the icon for this message.
+     * @return bool|null
      */
-    public function getIconEmoji()
+    public function getLinkNames()
     {
-        return $this->iconEmoji;
+        return $this->linkNames;
     }
 
     /**
-     * @param string|null $iconUrl URL to an image to use as the icon for this message.
+     * Structured message attachments.
+     *
+     * @param Attachment $attachment
+     *
+     * @return ChatPostMessagePayload
      */
-    public function setIconUrl($iconUrl)
+    public function addAttachment(Attachment $attachment)
     {
-        $this->iconUrl = $iconUrl;
+        $this->attachments->add($attachment);
 
         return $this;
     }
 
     /**
-     * @return string|null URL to an image to use as the icon for this message.
+     * @param Attachment $attachment
      */
-    public function getIconUrl()
+    public function attach(Attachment $attachment)
     {
-        return $this->iconUrl;
+        return $this->addAttachment($attachment);
     }
 
     /**
-     * By default links to media are unfurled, but links to text content are not.
-     * For more information on the differences and how to control this, see the the unfurling documentation.
+     * @return Attachment[]|ArrayCollection
+     */
+    public function getAttachments()
+    {
+        return $this->attachments;
+    }
+
+    /**
+     * Use for serialization.
+     *
+     * @return string
+     */
+    public function getAttachmentsJson()
+    {
+        return $this->attachmentsJson;
+    }
+
+    /**
+     * Pass true to enable unfurling of primarily text-based content.
+     *
+     * @param bool $unfurlLinks
      *
      * @see https://api.slack.com/docs/unfurling
-     *
-     * @param bool $unfurlLinks Pass true to enable unfurling of primarily text-based content.
      */
     public function setUnfurlLinks($unfurlLinks)
     {
@@ -276,9 +256,11 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * @see https://api.slack.com/docs/unfurling
+     * Pass false to disable unfurling of media content.
      *
-     * @param bool $unfurlMedia Pass false to disable unfurling of media content.
+     * @param bool $unfurlMedia
+     * 
+     * @see https://api.slack.com/docs/unfurling
      */
     public function setUnfurlMedia($unfurlMedia)
     {
@@ -296,59 +278,137 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * @param bool $linkNames Set to true to automatically find and link channel names and usernames in the message.
+     * Set your bot's user name. Must be used in conjunction with as_user set to false, otherwise ignored.
+     *
+     * @param string $username
+     *
+     * @return ChatPostMessagePayload
      */
-    public function setLinkNames($linkNames)
+    public function setUsername($username)
     {
-        $this->linkNames = $linkNames;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * @see https://api.slack.com/docs/unfurling
-     *
-     * @return bool|null Whether channel names and usernames in the message should be linked automatically.
-     */
-    public function getLinkNames()
-    {
-        return $this->linkNames;
-    }
-
-    /**
-     * @return Attachment[]|ArrayCollection
-     */
-    public function getAttachments()
-    {
-        return $this->attachments;
-    }
-
-    /**
-     * @param Attachment $attachment
-     */
-    public function attach(Attachment $attachment)
-    {
-        return $this->addAttachment($attachment);
-    }
-
-    /**
-     * @param Attachment $attachment
-     */
-    public function addAttachment(Attachment $attachment)
-    {
-        $this->attachments->add($attachment);
-
-        return $this;
-    }
-
-    /**
-     * Use for serialization.
-     *
      * @return string
      */
-    public function getAttachmentsJson()
+    public function getUsername()
     {
-        return $this->attachmentsJson;
+        return $this->username;
+    }
+
+    /**
+     * Pass true to post the message as the authed user, instead of as a bot. Defaults to false.
+     *
+     * @param bool $asUser
+     *
+     * @return ChatPostMessagePayload
+     */
+    public function setAsUser($asUser)
+    {
+        $this->asUser = $asUser;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAsUser()
+    {
+        return $this->asUser;
+    }
+
+    /**
+     * URL to an image to use as the icon for this message.
+     * Must be used in conjunction with as_user set to false, otherwise ignored.
+     *
+     * @param string|null $iconUrl
+     */
+    public function setIconUrl($iconUrl)
+    {
+        $this->iconUrl = $iconUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getIconUrl()
+    {
+        return $this->iconUrl;
+    }
+
+    /**
+     * Emoji to use as the icon for this message. Overrides icon_url.
+     * Must be used in conjunction with as_user set to false, otherwise ignored.
+     *
+     * @param string|null
+     *
+     * @see https://{YOURSLACKTEAMHERE}.slack.com/customize/emoji
+     */
+    public function setIconEmoji($iconEmoji)
+    {
+        if (substr($iconEmoji, 0, 1) !== ':') {
+            $iconEmoji = sprintf(':%s:', $iconEmoji);
+        }
+
+        $this->iconEmoji = $iconEmoji;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getIconEmoji()
+    {
+        return $this->iconEmoji;
+    }
+
+    /**
+     * Provide another message's ts value to make this message a reply.
+     * Avoid using a reply's ts value; use its parent instead.
+     *
+     * @param string $threadTs
+     */
+    public function setThreadTs($threadTs)
+    {
+        $this->threadTs = $threadTs;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getThreadTs()
+    {
+        return $this->threadTs;
+    }
+
+    /**
+     * Used in conjunction with thread_ts and indicates whether reply should be made visible
+     * to everyone in the channel or conversation. Defaults to false.
+     *
+     * @param string $replyBroadcast
+     */
+    public function setReplyBroadcast($replyBroadcast)
+    {
+        $this->replyBroadcast = $replyBroadcast;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getReplyBroadcast()
+    {
+        return $this->replyBroadcast;
     }
 
     /**

@@ -5,23 +5,27 @@ CL\Slack\Payload\ChatPostMessagePayload:
             type: string
         text:
             type: string
-        username:
-            type: string
-        iconEmoji:
-            type: string
-        iconUrl:
-            type: string
-        unfurlLinks:
-            type: string
-        unfurlMedia:
+        parse:
             type: string
         linkNames:
             type: string
-        parse:
-            type: string
-        asUser:
-            type: boolean
         attachments:
             type: string
             accessor:
                 getter: getAttachmentsJson
+        unfurlLinks:
+            type: string
+        unfurlMedia:
+            type: string
+        username:
+            type: string
+        asUser:
+            type: boolean
+        iconUrl:
+            type: string
+        iconEmoji:
+            type: string
+        threadTs:
+            type: string
+        replyBroadcast:
+            type: string
