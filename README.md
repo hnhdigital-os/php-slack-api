@@ -11,21 +11,21 @@ Access your Slack Team's API through PHP objects.
 
 [![Latest Version](https://img.shields.io/github/release/bluora/php-slack-api.svg?style=flat-square)](https://github.com/bluora/php-slack-api/releases)
 [![Total Downloads](https://img.shields.io/packagist/dt/bluora/php-slack-api.svg?style=flat-square)](https://packagist.org/packages/bluora/php-slack-api)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/cleentfaar/slack/blob/master/LICENSE.md)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/bluora/php-slack-api/blob/master/LICENSE.md)
 
-This package has been adapted from [cleentfaar/slack](https://github.com/cleentfaar/slack) by H&H|Digital, an Australian botique developer. Visit us at [hnh.digital](http://hnh.digital).
+This package has been adapted from [bluora/php-slack-api](https://github.com/bluora/php-slack-api) by H&H|Digital, an Australian botique developer. Visit us at [hnh.digital](http://hnh.digital).
 
 ### Documentation
 
-- [Getting started](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
-- [Installation](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/installation.md) - Information on installing this library through composer or as a git submodule.
-- [Usage](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.md) - A few simple examples on how to access the Slack API using this library
-- [API methods](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's `Payload` classes.
-- [Events](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/events.md) - Examples for listening to events fired by the `ApiClient`
+- [Getting started](https://github.com/bluora/php-slack-api/blob/master/src/CL/Slack/Resources/doc/getting-started.md) - Before you use this library, you need to generate a token or setup oAuth.
+- [Installation](https://github.com/bluora/php-slack-api/blob/master/src/CL/Slack/Resources/doc/installation.md) - Information on installing this library through composer or as a git submodule.
+- [Usage](https://github.com/bluora/php-slack-api/blob/master/src/CL/Slack/Resources/doc/usage.md) - A few simple examples on how to access the Slack API using this library
+- [API methods](https://github.com/bluora/php-slack-api/blob/master/src/CL/Slack/Resources/doc/methods/index.md) - Detailed information on each of Slack's API methods and how to access them using this library's `Payload` classes.
+- [Events](https://github.com/bluora/php-slack-api/blob/master/src/CL/Slack/Resources/doc/events.md) - Examples for listening to events fired by the `ApiClient`
 
 
 ### Features
-- Access all of Slack's API methods with dedicated payload classes (see [usage documentation](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/usage.md))
+- Access all of Slack's API methods with dedicated payload classes (see [usage documentation](https://github.com/bluora/php-slack-api/blob/master/src/CL/Slack/Resources/doc/usage.md))
 - Payloads and responses follow the same definitions as described in the [official documentation](https://api.slack.com) (with a few exceptions where I think it would make a better distinction).
 - Data between you and Slack is serialized using the [JMS Serializer](http://jmsyst.com/libs/serializer) package,
 allowing fully spec-ed PHP objects to be used for working with the API.
@@ -46,14 +46,14 @@ to create an issue for it.
 ### Contributing
 
 Got a good idea for this project? Found a nasty bug that needs fixing? That's great!
-Before submitting your PR though, make sure it complies with the [contributing guide](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/contributing.md) to
+Before submitting your PR though, make sure it complies with the [contributing guide](https://github.com/bluora/php-slack-api/blob/master/src/CL/Slack/Resources/doc/contributing.md) to
 speed up the merging of your code.
 
 
 ### Missing methods
 
 The following methods have not yet been implemented, why not contribute and add some yourself?
-- files.delete*
+- files.delete
 - pins.add
 - pins.list
 - pins.remove
@@ -63,8 +63,6 @@ The following methods have not yet been implemented, why not contribute and add 
 - reactions.remove
 - team.accessLogs
 - team.info
-
-\* = issue/PR has been opened for this method
 
 
 ### Related packages
