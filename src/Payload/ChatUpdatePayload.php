@@ -93,13 +93,13 @@ class ChatUpdatePayload extends AbstractPayload implements AdvancedSerializeInte
     }
 
     /**
-     * Channel containing the message to be updated.
+     * Channel (ID only!) containing the message to be updated.
      * 
      * @param string $channel
      *
      * @return ChatUpdatePayload
      */
-    public function setChannel($channel)
+    public function setChannelId($channel)
     {
         $this->channel = $channel;
 
@@ -109,7 +109,7 @@ class ChatUpdatePayload extends AbstractPayload implements AdvancedSerializeInte
     /**
      * @return string
      */
-    public function getChannel()
+    public function getChannelId()
     {
         return $this->channel;
     }
