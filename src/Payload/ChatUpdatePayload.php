@@ -11,12 +11,16 @@
 
 namespace CL\Slack\Payload;
 
+use CL\Slack\Model\Attachment;
+use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Serializer;
+
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  *
  * @link Official documentation at https://api.slack.com/methods/chat.delete
  */
-class ChatUpdatePayload extends AbstractPayload
+class ChatUpdatePayload extends AbstractPayload implements AdvancedSerializeInterface
 {
     /**
      * @var string
