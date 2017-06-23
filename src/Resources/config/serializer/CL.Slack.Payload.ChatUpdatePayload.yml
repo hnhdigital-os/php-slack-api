@@ -1,12 +1,18 @@
 CL\Slack\Payload\ChatUpdatePayload:
     properties:
-        text:
+        ts:
             type: string
         channel:
             type: string
-        ts:
+        text:
             type: string
+        attachments:
+            type: string
+            accessor:
+                getter: getAttachmentsJson
         parse:
             type: string
         linkNames:
             type: string
+        asUser:
+            type: boolean

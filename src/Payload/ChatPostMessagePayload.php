@@ -92,6 +92,9 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
      */
     private $replyBroadcast;
 
+    /**
+     * Set attachments variable to array collection.
+     */
     public function __construct()
     {
         $this->attachments = new ArrayCollection();

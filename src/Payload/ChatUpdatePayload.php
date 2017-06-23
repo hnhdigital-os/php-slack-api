@@ -21,17 +21,27 @@ class ChatUpdatePayload extends AbstractPayload
     /**
      * @var string
      */
-    private $channel;
-
-    /**
-     * @var string
-     */
     private $ts;
 
     /**
      * @var string
      */
+    private $channel;
+
+    /**
+     * @var string
+     */
     private $text;
+
+    /**
+     * @var Attachment[]|ArrayCollection
+     */
+    private $attachments;
+
+    /**
+     * @var string
+     */
+    private $attachmentsJson;
 
     /**
      * @var string
@@ -44,43 +54,76 @@ class ChatUpdatePayload extends AbstractPayload
     private $linkNames;
 
     /**
-     * @param string $channelId
+     * @var bool
      */
-    public function setChannelId($channelId)
+    private $asUser;
+
+    /**
+     * Set attachments variable to array collection.
+     */
+    public function __construct()
     {
-        $this->channel = $channelId;
+        $this->attachments = new ArrayCollection();
     }
 
     /**
-     * @return string
-     */
-    public function getChannelId()
-    {
-        return $this->channel;
-    }
-
-    /**
+     * Timestamp of the message to be updated.
+     *
      * @param string $timestamp
+     *
+     * @return ChatUpdatePayload
      */
-    public function setSlackTimestamp($timestamp)
+    public function setTs($timestamp)
     {
         $this->ts = $timestamp;
+
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getSlackTimestamp()
+    public function getTs()
     {
         return $this->ts;
     }
 
     /**
+     * Channel containing the message to be updated.
+     * 
+     * @param string $channel
+     *
+     * @return ChatUpdatePayload
+     */
+    public function setChannel($channel)
+    {
+        $this->channel = $channel;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getChannel()
+    {
+        return $this->channel;
+    }
+
+    /**
+     * New text for the message, using the default formatting rules.
+     * 
      * @param string $text
+     *
+     * @return ChatUpdatePayload
+     *
+     * @see https://api.slack.com/docs/formatting
      */
     public function setText($text)
     {
         $this->text = $text;
+
+        return $this;
     }
 
     /**
@@ -92,37 +135,63 @@ class ChatUpdatePayload extends AbstractPayload
     }
 
     /**
-     * @deprecated Will be removed soon, use `setText()` instead
+     * Structured message attachments.
      *
-     * @param string $message
+     * @param Attachment $attachment
+     *
+     * @return ChatUpdatePayload
      */
-    public function setMessage($message)
+    public function addAttachment(Attachment $attachment)
     {
-        $this->setText($message);
+        $this->attachments->add($attachment);
+
+        return $this;
     }
 
     /**
-     * @deprecated Will be removed soon, use `getText()` instead
+     * @param Attachment $attachment
+     */
+    public function attach(Attachment $attachment)
+    {
+        return $this->addAttachment($attachment);
+    }
+
+    /**
+     * @return Attachment[]|ArrayCollection
+     */
+    public function getAttachments()
+    {
+        return $this->attachments;
+    }
+
+    /**
+     * Use for serialization.
      *
      * @return string
      */
-    public function getMessage()
+    public function getAttachmentsJson()
     {
-        return $this->getText();
+        return $this->attachmentsJson;
     }
 
     /**
-     * @param string $parse Change how messages are treated.
+     * Change how messages are treated. Defaults to client, unlike chat.postMessage. 
+     * 
+     * @param string $parse
      *
-     * @see https://api.slack.com/docs/formatting
+     * @return ChatUpdatePayload
+     *
+     * @see https://api.slack.com/methods/chat.update#formatting
      */
     public function setParse($parse)
     {
         $this->parse = $parse;
+
+        return $this;
     }
 
     /**
-     * @return string Change how messages are treated.
+     * @return string
      */
     public function getParse()
     {
@@ -130,21 +199,49 @@ class ChatUpdatePayload extends AbstractPayload
     }
 
     /**
-     * @param bool $linkNames Set to true to automatically find and link channel names and usernames in the message.
+     * Find and link channel names and usernames. Defaults to none.
+     * This parameter should be used in conjunction with parse.
+     * To set link_names to 1, specify a parse mode of full.
+     * 
+     * @param bool $linkNames
+     *
+     * @return ChatUpdatePayload
      */
     public function setLinkNames($linkNames)
     {
         $this->linkNames = $linkNames;
+
+        return $this;
     }
 
     /**
-     * @see https://api.slack.com/docs/unfurling
-     *
-     * @return bool|null Whether channel names and usernames in the message should be linked automatically.
+     * @return bool|null
      */
     public function getLinkNames()
     {
         return $this->linkNames;
+    }
+
+    /**
+     * Pass true to post the message as the authed user, instead of as a bot. Defaults to false.
+     *
+     * @param bool $asUser
+     *
+     * @return ChatUpdatePayload
+     */
+    public function setAsUser($asUser)
+    {
+        $this->asUser = $asUser;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAsUser()
+    {
+        return $this->asUser;
     }
 
     /**
@@ -153,5 +250,13 @@ class ChatUpdatePayload extends AbstractPayload
     public function getMethod()
     {
         return 'chat.update';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSerialize(Serializer $serializer)
+    {
+        $this->attachmentsJson = $serializer->serialize($this->attachments, 'json');
     }
 }
