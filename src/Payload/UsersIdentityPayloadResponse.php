@@ -16,7 +16,7 @@ namespace CL\Slack\Payload;
  *
  * @link Official documentation at https://api.slack.com/methods/users.identity
  */
-class UsersIdentityPayload extends AbstractPayloadResponse
+class UsersIdentityPayloadResponse extends AbstractPayloadResponse
 {
     /**
      * @var User[]
