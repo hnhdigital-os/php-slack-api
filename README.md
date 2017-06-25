@@ -36,20 +36,77 @@ From v1.0.0.0 all the payloads and responses will be matched with the Slack API 
 allowing fully spec-ed PHP objects to be used for working with the API.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle))
 
-### Missing methods
+### Missing API methods
 
-The following methods have not yet been implemented, why not contribute and add some yourself?
+The following methods have not been implemented.
+
+Feel free to add a PR!
+
+- auth.revoke
+- channels.replies
+- chat.meMessage
+- chat.unfurl
+- dnd.endDnd
+- dnd.endSnooze
+- dnd.setSnooze
+- dnd.teamInfo
+- files.comments.add
+- files.comments.delete
+- files.comments.edit
 - files.delete
+- files.revokePublicURL
+- files.sharedPulbicURL
+- im.replies
+- mpim.close
+- mpim.history
+- mpim.list
+- mpim.mark
+- mpim.open
+- mpim.replies
 - pins.add
 - pins.list
 - pins.remove
 - reactions.add
-- reactions.get
 - reactions.list
 - reactions.remove
+- reminders.add
+- reminders.complete
+- reminders.delete
+- reminders.info
+- reminders.list
+- rtm.connect
+- stars.add
+- stars.remove
 - team.accessLogs
-- team.info
+- team.billableInfo
+- team.integrationLog
+- team.profile.get
+- usergroups.create
+- usergroups.disable
+- usergroups.enable
+- usergroups.list
+- usergroups.update
+- usergroups.users.list
+- usergroups.users.update
+- users.deletePhoto
+- users.setPhoto
+- users.profile.get
+- users.profile.set
 
+### Methods that need removing
+
+The following methods no longer exist in the API:
+
+- users.adminInvite
+
+### Up-to-date methods
+
+The following methods have been reviewed and updated:
+
+- chat.postMessage
+- chat.update
+- oauth.access
+- users.identity
 
 ### Related packages
 
