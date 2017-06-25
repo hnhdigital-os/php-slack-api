@@ -13,7 +13,12 @@ Access your Slack Team's API through PHP objects.
 [![Total Downloads](https://img.shields.io/packagist/dt/bluora/php-slack-api.svg?style=flat-square)](https://packagist.org/packages/bluora/php-slack-api)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://github.com/bluora/php-slack-api/blob/master/LICENSE.md)
 
-This package has been adapted from [bluora/php-slack-api](https://github.com/bluora/php-slack-api) by H&H|Digital, an Australian botique developer. Visit us at [hnh.digital](http://hnh.digital).
+This package has been adapted from [cleentfaar/slack](https://github.com/cleentfaar/slack) by H&H|Digital, an Australian botique developer. Visit us at [hnh.digital](http://hnh.digital).
+
+### 1.0.0 release
+Please note that from the 1.0.0 release this package's namespace (and folder structure) will change from CL\Slack to Bluora\SlackApi.
+
+From v1.0.0.0 all the payloads and responses will be matched with the Slack API and missing api methods (listed below) will be completed.
 
 ### Documentation
 
@@ -30,25 +35,6 @@ This package has been adapted from [bluora/php-slack-api](https://github.com/blu
 - Data between you and Slack is serialized using the [JMS Serializer](http://jmsyst.com/libs/serializer) package,
 allowing fully spec-ed PHP objects to be used for working with the API.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle))
-
-
-### Further reading
-
-I've done my best to include links to the official documentation in the code where appropriate.
-
-Still, you should really check out the [API documentation](https://api.slack.com/) of Slack yourself to get a better
-understanding of exactly what each API method does and what data it will return.
-
-If you feel there is some part of this package that you would like to see documented in more detail, please don't hesitate
-to create an issue for it.
-
-
-### Contributing
-
-Got a good idea for this project? Found a nasty bug that needs fixing? That's great!
-Before submitting your PR though, make sure it complies with the [contributing guide](https://github.com/bluora/php-slack-api/blob/master/src/CL/Slack/Resources/doc/contributing.md) to
-speed up the merging of your code.
-
 
 ### Missing methods
 
@@ -68,11 +54,6 @@ The following methods have not yet been implemented, why not contribute and add 
 ### Related packages
 
 - [Slack for Laravel](https://github.com/bluora/laravel-slack-api) - Laravel integration with this library package.
-
-
-### Attributions
-
-- The [Slack](https://slack.com/) staff, for making an awesome product and very clean API documentation.
 
 ### FAQ
 
@@ -96,3 +77,18 @@ $apiClient =  new ApiClient('api-token-here', $client);
 ```
 
 If you get a different error code you can look at the [list of cURL error codes](http://curl.haxx.se/libcurl/c/libcurl-errors.html), or consult the [Guzzle documentation](http://docs.guzzlephp.org/en/latest/) directly.
+
+## Contributing
+
+Please see [CONTRIBUTING](https://github.com/bluora/php-slack-api/blob/master/CONTRIBUTING.md) for details.
+
+## Credits
+
+* [Cas Leentfaar](https://github.com/cleentfaar)
+* [Rocco Howard](https://github.com/therocis)
+* [All Contributors](https://github.com/bluora/php-slack-api/contributors)
+
+## License
+
+The MIT License (MIT). Please see [License File](https://github.com/bluora/php-slack-api/blob/master/LICENSE) for more information.
+
