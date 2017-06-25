@@ -46,10 +46,10 @@ Feel free to fix with a PR.
 
 The following methods have been reviewed and updated:
 
-- chat.postMessage (June 23, 2017)
-- chat.update (June 23, 2017)
-- oauth.access (June 21, 2017)
-- users.identity (June 25, 2017)
+- chat.postMessage (Last reviewed: June 23, 2017)
+- chat.update (Last reviewed: June 23, 2017)
+- oauth.access (Last reviewed: June 21, 2017)
+- users.identity (Added: June 25, 2017)
 
 Feel free to review a method and update the README with a PR.
 
