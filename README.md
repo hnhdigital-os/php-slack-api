@@ -18,7 +18,7 @@ This package has been adapted from [cleentfaar/slack](https://github.com/cleentf
 ### 1.0.0 release
 Please note that from the 1.0.0 release this package's namespace (and folder structure) will change from CL\Slack to Bluora\SlackApi.
 
-From v1.0.0.0 all the payloads and responses will be matched with the Slack API and missing api methods (listed below) will be completed.
+From v1.0.0 all the payloads and responses will be matched with the Slack API and missing api methods (listed below) will be completed.
 
 ### Documentation
 
@@ -35,6 +35,12 @@ From v1.0.0.0 all the payloads and responses will be matched with the Slack API 
 - Data between you and Slack is serialized using the [JMS Serializer](http://jmsyst.com/libs/serializer) package,
 allowing fully spec-ed PHP objects to be used for working with the API.
 - Code has been highly abstracted to support re-use in more specific implementations (see [SlackBundle](https://github.com/cleentfaar/CLSlackBundle))
+
+### Unit testing
+
+Currently unit testing is broken (as per imported repo cleentfaar/slack). This will be updated to the latest version shortly.
+
+Feel free to fix with a PR!
 
 ### Missing API methods
 
