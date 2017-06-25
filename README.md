@@ -40,13 +40,24 @@ allowing fully spec-ed PHP objects to be used for working with the API.
 
 Currently unit testing is broken (as per imported repo cleentfaar/slack). This will be updated to the latest version shortly.
 
-Feel free to fix with a PR!
+Feel free to fix with a PR.
+
+### Up-to-date methods
+
+The following methods have been reviewed and updated:
+
+- chat.postMessage (June 23, 2017)
+- chat.update (June 23, 2017)
+- oauth.access (June 21, 2017)
+- users.identity (June 25, 2017)
+
+Feel free to review a method and update the README with a PR.
 
 ### Missing API methods
 
 The following methods have not been implemented.
 
-Feel free to add a PR!
+Feel free to add a PR.
 
 - auth.revoke
 - channels.replies
@@ -104,15 +115,6 @@ Feel free to add a PR!
 The following methods no longer exist in the API:
 
 - users.adminInvite
-
-### Up-to-date methods
-
-The following methods have been reviewed and updated:
-
-- chat.postMessage
-- chat.update
-- oauth.access
-- users.identity
 
 ### Related packages
 
