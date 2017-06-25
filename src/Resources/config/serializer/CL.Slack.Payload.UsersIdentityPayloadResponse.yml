@@ -1,0 +1,6 @@
+CL\Slack\Payload\UsersIdentityPayloadResponse:
+    properties:
+        user:
+            type: array
+        team:
+            type: array

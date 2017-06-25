@@ -1,0 +1,4 @@
+CL\Slack\Payload\UsersIdentityPayload:
+    properties:
+        token:
+            type: string
