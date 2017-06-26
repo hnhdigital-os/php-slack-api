@@ -60,6 +60,11 @@ class ApiClient implements ApiClientInterface
     private $endpoint;
 
     /**
+     * @var bool
+     */
+    private $logNotOk = false;
+
+    /**
      * @var PayloadSerializer
      */
     private $payloadSerializer;
@@ -98,11 +103,37 @@ class ApiClient implements ApiClientInterface
     }
 
     /**
+     * Set logging of error explanations when response is not ok.
+     *
+     * @param bool $logNotOk
+     *
+     * @return ApiClient
+     */
+    public function setLogNotOk($logNotOk)
+    {
+        $this->logNotOk = $logNotOk;
+
+        return $this;
+    }
+
+    /**
+     * Get the boolean of  logging of error explanations when response is not ok.
+     *
+     * @param string $endpoint
+     *
+     * @return string
+     */
+    public function isLogNotOk()
+    {
+        return $this->logNotOk;
+    }
+
+    /**
      * Get the endpoint for this payload.
      *
      * @param string $endpoint
      *
-     * @return void
+     * @return string
      */
     public function getEndpoint()
     {
@@ -114,7 +145,7 @@ class ApiClient implements ApiClientInterface
      *
      * @param string $endpoint
      *
-     * @return void
+     * @return ApiClient
      */
     public function setEndpoint($endpoint)
     {
@@ -126,7 +157,7 @@ class ApiClient implements ApiClientInterface
     /**
      * Reset the endpoint for this payload.
      *
-     * @return void
+     * @return ApiClient
      */
     public function resetEndpoint()
     {
@@ -219,6 +250,10 @@ class ApiClient implements ApiClientInterface
             }
 
             $this->eventDispatcher->dispatch(self::EVENT_RESPONSE, new ResponseEvent($responseData));
+
+            if ($this->isLogNotOk() && !$responseData->isOk()) {
+                error_log($responseData->getErrorExplanation());
+            }
 
             return $responseData;
         } catch (\Exception $e) {
