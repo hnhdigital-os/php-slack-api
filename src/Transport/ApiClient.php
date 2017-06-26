@@ -186,7 +186,13 @@ class ApiClient implements ApiClientInterface
             $serializedPayload = $this->payloadSerializer->serialize($payload);
             $responseData = $this->doSend($payload->getMethod(), $serializedPayload, $token);
 
-            return $this->payloadResponseSerializer->deserialize($responseData, $payload->getResponseClass());
+            $response = $this->payloadResponseSerializer->deserialize($responseData, $payload->getResponseClass());
+
+            if ($this->isLogNotOk() && !$response->isOk()) {
+                error_log($response->getErrorExplanation());
+            }
+
+            return $response;
         } catch (\Exception $e) {
             throw new SlackException(sprintf('Failed to send payload: %s', $e->getMessage()), null, $e);
         }
@@ -250,10 +256,6 @@ class ApiClient implements ApiClientInterface
             }
 
             $this->eventDispatcher->dispatch(self::EVENT_RESPONSE, new ResponseEvent($responseData));
-
-            if ($this->isLogNotOk() && !$responseData->isOk()) {
-                error_log($responseData->getErrorExplanation());
-            }
 
             return $responseData;
         } catch (\Exception $e) {
