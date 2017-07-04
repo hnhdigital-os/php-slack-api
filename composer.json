@@ -1,7 +1,7 @@
 {
-  "name": "bluora/php-slack-api",
+  "name": "hnhdigital-os/php-slack-api",
   "description": "Access your Slack Team's API through PHP objects",
-  "homepage": "http://bluora.github.io/php-slack-api/",
+  "homepage": "http://hnhdigital-os.github.io/php-slack-api/",
   "keywords": [
     "slack",
     "slack api",
