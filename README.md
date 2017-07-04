@@ -16,7 +16,7 @@ Access your Slack Team's API through PHP objects.
 This package has been adapted from [cleentfaar/slack](https://github.com/cleentfaar/slack) by H&H|Digital, an Australian botique developer. Visit us at [hnh.digital](http://hnh.digital).
 
 ### 1.0.0 release
-Please note that from the 1.0.0 release this package's namespace (and folder structure) will change from CL\Slack to Hnh\SlackApi.
+Please note that from the 1.0.0 release this package's namespace (and folder structure) will change from CL\Slack to HnhDigital\SlackApi.
 
 From v1.0.0 all the payloads and responses will be matched with the Slack API and missing api methods (listed below) will be completed.
 
