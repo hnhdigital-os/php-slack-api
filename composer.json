@@ -36,7 +36,7 @@
     "symfony/var-dumper": "^2.3|^3.0"
   },
   "suggest": {
-    "bluora/laravel-slack-api": "For easy integration with your Laravel projects"
+    "hnhdigital-os//laravel-slack-api": "For easy integration with your Laravel projects"
   },
   "autoload": {
     "psr-4": {
