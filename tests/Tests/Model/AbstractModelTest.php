@@ -19,7 +19,7 @@ use JMS\Serializer\SerializerBuilder;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractModelTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractModelTest extends \PHPUnit\Framework\TestCase
 {
     use ModelTrait;
 

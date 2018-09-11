@@ -26,7 +26,7 @@ use Mockery as Mock;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ApiClientTest extends \PHPUnit_Framework_TestCase
+class ApiClientTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

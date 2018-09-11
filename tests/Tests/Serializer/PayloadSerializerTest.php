@@ -17,7 +17,7 @@ use CL\Slack\Test\Payload\PayloadMock;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class PayloadSerializerTest extends \PHPUnit_Framework_TestCase
+class PayloadSerializerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var PayloadSerializer

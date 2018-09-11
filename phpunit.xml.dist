@@ -13,9 +13,9 @@
     </testsuite>
   </testsuites>
 
-  <listeners>
+  <!--<listeners>
     <listener class="Mockery\Adapter\Phpunit\TestListener"/>
-  </listeners>
+  </listeners>-->
 
   <filter>
     <whitelist>

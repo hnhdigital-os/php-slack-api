@@ -17,7 +17,7 @@ use CL\Slack\Transport\Events\RequestEvent;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class RequestEventTest extends \PHPUnit_Framework_TestCase
+class RequestEventTest extends \PHPUnit\Framework\TestCase
 {
     use ModelTrait;
 

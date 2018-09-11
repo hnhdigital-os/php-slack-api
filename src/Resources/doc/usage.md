@@ -21,7 +21,7 @@ Once obtained, you should provide it as the constructor argument.
 $client = new ApiClient('your-api-token-here');
 ```
 
-**NOTE:** Alternatively, you can provide a token on each call you make to the `send()`-method (see further below); 
+**NOTE:** Alternatively, you can provide a token on each call you make to the `send()`-method (see further below);
 it all depends on how you use this in your application.
 
 
@@ -63,4 +63,4 @@ errors below.
 
 ## Next chapter
 
-In the next chapter, I show you an example of using the events made available by this package: [Events](https://github.com/cleentfaar/slack/blob/master/src/CL/Slack/Resources/doc/events.md)
+In the next chapter, I show you an example of using the events made available by this package: [Events](events.md)

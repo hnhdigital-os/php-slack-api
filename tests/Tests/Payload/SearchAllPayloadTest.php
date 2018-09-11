@@ -11,6 +11,7 @@
 
 namespace CL\Slack\Tests\Payload;
 
+use CL\Slack\Payload\AbstractSearchPayload;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Payload\SearchAllPayload;
 
@@ -22,7 +23,7 @@ class SearchAllPayloadTest extends AbstractSearchPayloadTest
     /**
      * @inheritdoc
      */
-    protected function createPayload()
+    protected function createPayload(AbstractSearchPayload $payload = null)
     {
         $payload = new SearchAllPayload();
 

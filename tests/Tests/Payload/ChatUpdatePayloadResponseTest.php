@@ -40,7 +40,7 @@ class ChatUpdatePayloadResponseTest extends AbstractPayloadResponseTestCase
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
         $this->assertEquals($responseData['channel'], $payloadResponse->getChannelId());
-        $this->assertEquals($responseData['ts'], $payloadResponse->getSlackTimestamp());
+        $this->assertEquals($responseData['ts'], $payloadResponse->getTs());
         $this->assertEquals($responseData['text'], $payloadResponse->getText());
     }
 }
