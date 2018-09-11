@@ -18,8 +18,6 @@ CL\Slack\Model\Attachment:
             type: string
         color:
             type: string
-        fallback:
-            type: string
         callbackId:
             type: string
         fields:

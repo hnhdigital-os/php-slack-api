@@ -84,12 +84,12 @@ class Attachment extends AbstractModel
      * @var AttachmentAction[]|ArrayCollection
      */
     private $actions;
-    
+
     /**
      * @var Array
      */
     private $mrkdwnIn;
-    
+
     /**
      * @var string
      */
@@ -308,23 +308,23 @@ class Attachment extends AbstractModel
      */
     public function getActions()
     {
-        return $this->action;
+        return $this->actions;
     }
-    
+
     /**
      * @param array Valid values for mrkdwn_in are: ["pretext", "text", "fields"]. Setting "fields" will enable markup formatting for the value of each field
      */
-    public function setMrkdwnIn(Array $mrkdwnIn)
+    public function setMrkdwnIn(array $mrkdwnIn)
     {
-    	$this->mrkdwnIn = $mrkdwnIn;
+        $this->mrkdwnIn = $mrkdwnIn;
     }
-    
+
     /**
      * @return Array Valid values for mrkdwn_in are: ["pretext", "text", "fields"]. Setting "fields" will enable markup formatting for the value of each field
      */
     public function getMrkdwnIn()
     {
-    	return $this->mrkdwnIn;
+        return $this->mrkdwnIn;
     }
 
     /**

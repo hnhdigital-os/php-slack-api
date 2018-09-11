@@ -16,7 +16,7 @@ use CL\Slack\Transport\Events\ResponseEvent;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ResponseEventTest extends \PHPUnit_Framework_TestCase
+class ResponseEventTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test

@@ -27,7 +27,7 @@ use CL\Slack\Model\StarredItem;
 use CL\Slack\Model\Team;
 use CL\Slack\Model\User;
 use CL\Slack\Model\UserProfile;
-use PHPUnit_Framework_Assert as Assert;
+use PHPUnit\Framework\Assert as Assert;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>

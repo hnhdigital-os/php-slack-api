@@ -104,6 +104,7 @@ class ChatPostMessagePayloadTest extends AbstractPayloadTestCase
                             'short' => $attachmentField->isShort(),
                         ],
                     ],
+                    'actions' => $attachment->getActions()->toArray(),
                 ],
             ]),
         ];

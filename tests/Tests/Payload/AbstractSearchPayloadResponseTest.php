@@ -18,7 +18,7 @@ use CL\Slack\Test\Model\ModelTrait;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractSearchPayloadResponseTest extends \PHPUnit_Framework_TestCase
+abstract class AbstractSearchPayloadResponseTest extends \PHPUnit\Framework\TestCase
 {
     use ModelTrait;
 

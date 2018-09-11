@@ -18,7 +18,7 @@ use CL\Slack\Test\Model\ModelTrait;
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractPayloadResponseTestCase extends \PHPUnit_Framework_TestCase
+abstract class AbstractPayloadResponseTestCase extends \PHPUnit\Framework\TestCase
 {
     use ModelTrait;
 
@@ -72,7 +72,7 @@ abstract class AbstractPayloadResponseTestCase extends \PHPUnit_Framework_TestCa
     /**
      * Returns the response class used for this test-case
      * Can be overwritten if it deviates from the standard pattern.
-     * 
+     *
      * @return string
      */
     protected function getResponseClass()

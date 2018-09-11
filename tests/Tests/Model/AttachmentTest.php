@@ -44,7 +44,7 @@ class AttachmentTest extends AbstractModelTest
      */
     protected function getModelClass()
     {
-        return 'CL\Slack\Model\Attachment';
+        return Attachment::class;
     }
 
     /**
