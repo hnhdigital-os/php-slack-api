@@ -27,7 +27,7 @@ abstract class AbstractPayloadResponseTestCase extends \PHPUnit\Framework\TestCa
      */
     private $serializer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->serializer = new PayloadResponseSerializer();
     }

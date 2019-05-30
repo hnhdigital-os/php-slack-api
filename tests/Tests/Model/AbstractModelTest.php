@@ -31,7 +31,7 @@ abstract class AbstractModelTest extends \PHPUnit\Framework\TestCase
     /**
      * @inheritdoc
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $metaDir = __DIR__ . '/../../../src/Resources/config/serializer';
         $this->serializer = SerializerBuilder::create()->addMetadataDir($metaDir)->build();

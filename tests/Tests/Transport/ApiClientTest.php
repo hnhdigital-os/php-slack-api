@@ -22,6 +22,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
 use Mockery as Mock;
+use CL\Slack\Exception\SlackException;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -52,6 +53,7 @@ class ApiClientTest extends \PHPUnit\Framework\TestCase
             new Client(['handler' => $handler])
         );
 
+        $eventsDispatched = [];
         $apiClient->addRequestListener(function (RequestEvent $event) use (&$eventsDispatched, $mockRequestData, $self) {
             $eventsDispatched[ApiClient::EVENT_REQUEST] = true;
             $self->assertEquals($mockRequestData, $event->getRawPayload());
@@ -68,7 +70,7 @@ class ApiClientTest extends \PHPUnit\Framework\TestCase
         $apiClient->send($payload);
 
         $transaction = $historyContainer[0];
-        $requestUrl = (string) $transaction['request']->getUri();
+        $requestUrl = (string)$transaction['request']->getUri();
         $requestContentType = $transaction['request']->getHeader('content-type')[0];
         parse_str($transaction['request']->getBody(), $requestBody);
         $responseBody = json_decode($transaction['response']->getBody(), true);
@@ -85,11 +87,11 @@ class ApiClientTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      *
-     * @expectedException \CL\Slack\Exception\SlackException
-     * @expectedExceptionMessage You must supply a token to send a payload, since you did not provide one during construction
      */
     public function it_can_not_send_a_payload_without_a_token()
     {
+        $this->expectException(SlackException::class);
+        $this->expectExceptionMessage("You must supply a token to send a payload, since you did not provide one during construction");
         /* @var PayloadInterface|Mock\MockInterface $mockPayload */
         $mockPayload = Mock::mock(PayloadInterface::class);
 

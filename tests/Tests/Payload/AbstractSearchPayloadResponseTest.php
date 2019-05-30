@@ -27,7 +27,7 @@ abstract class AbstractSearchPayloadResponseTest extends \PHPUnit\Framework\Test
      */
     private $serializer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->serializer = new PayloadResponseSerializer();
     }
@@ -50,7 +50,7 @@ abstract class AbstractSearchPayloadResponseTest extends \PHPUnit\Framework\Test
         $this->assertEquals($responseData['ok'], $actualPayloadResponse->isOk());
         if (array_key_exists('error', $responseData)) {
             $this->assertEquals($responseData['error'], $actualPayloadResponse->getError());
-            $this->assertInternalType('string', $actualPayloadResponse->getErrorExplanation());
+            $this->assertIsString($actualPayloadResponse->getErrorExplanation());
         }
         $this->assertResponse($responseData, $actualPayloadResponse);
     }
