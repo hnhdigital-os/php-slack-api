@@ -24,7 +24,7 @@ class PayloadResponseSerializerTest extends \PHPUnit\Framework\TestCase
      */
     private $payloadResponseSerializer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->payloadResponseSerializer = new PayloadResponseSerializer();
     }

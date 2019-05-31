@@ -24,7 +24,7 @@ class PayloadSerializerTest extends \PHPUnit\Framework\TestCase
      */
     private $payloadSerializer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->payloadSerializer = new PayloadSerializer();
     }
@@ -39,7 +39,7 @@ class PayloadSerializerTest extends \PHPUnit\Framework\TestCase
 
         $serializedPayload = $this->payloadSerializer->serialize($payload);
 
-        $this->assertInternalType('array', $serializedPayload);
+        $this->assertIsArray($serializedPayload);
         $this->assertArrayHasKey('fruit', $serializedPayload);
         $this->assertEquals($payload->getFruit(), $serializedPayload['fruit']);
     }

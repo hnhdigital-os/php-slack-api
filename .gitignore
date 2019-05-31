@@ -2,3 +2,5 @@
 /composer.lock
 /bin/*
 /vendor/*
+
+.phpunit.result.cache
