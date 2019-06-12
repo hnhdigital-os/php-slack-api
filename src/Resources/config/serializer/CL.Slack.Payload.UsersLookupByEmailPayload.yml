@@ -1,0 +1,4 @@
+CL\Slack\Payload\UsersLookupByEmailPayload:
+    properties:
+        email:
+            type: string

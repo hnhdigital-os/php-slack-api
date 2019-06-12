@@ -1,0 +1,4 @@
+CL\Slack\Payload\UsersLookupByEmailPayloadResponse:
+    properties:
+        user:
+            type: CL\Slack\Model\User
