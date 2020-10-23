@@ -232,7 +232,7 @@ class ApiClient implements ApiClientInterface
         try {
             $data['token'] = $token ?: $this->token;
 
-            $this->eventDispatcher->dispatch(self::EVENT_REQUEST, new RequestEvent($data));
+            $this->eventDispatcher->dispatch(new RequestEvent($data), self::EVENT_REQUEST);
 
             $request = $this->createRequest($method, $data);
 
@@ -255,7 +255,7 @@ class ApiClient implements ApiClientInterface
                 ));
             }
 
-            $this->eventDispatcher->dispatch(self::EVENT_RESPONSE, new ResponseEvent($responseData));
+            $this->eventDispatcher->dispatch(new ResponseEvent($responseData), self::EVENT_RESPONSE);
 
             return $responseData;
         } catch (\Exception $e) {
