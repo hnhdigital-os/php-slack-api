@@ -14,11 +14,12 @@ namespace CL\Slack\Tests\Payload;
 use CL\Slack\Payload\PayloadResponseInterface;
 use CL\Slack\Serializer\PayloadResponseSerializer;
 use CL\Slack\Test\Model\ModelTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractSearchPayloadResponseTest extends \PHPUnit\Framework\TestCase
+abstract class AbstractSearchPayloadResponseTest extends TestCase
 {
     use ModelTrait;
 
@@ -45,12 +46,12 @@ abstract class AbstractSearchPayloadResponseTest extends \PHPUnit\Framework\Test
             $this->getResponseClass()
         );
 
-        $this->assertInstanceOf('CL\Slack\Payload\PayloadResponseInterface', $actualPayloadResponse);
-        $this->assertInstanceOf($this->getResponseClass(), $actualPayloadResponse);
-        $this->assertEquals($responseData['ok'], $actualPayloadResponse->isOk());
+        self::assertInstanceOf(\CL\Slack\Payload\PayloadResponseInterface::class, $actualPayloadResponse);
+        self::assertInstanceOf($this->getResponseClass(), $actualPayloadResponse);
+        self::assertEquals($responseData['ok'], $actualPayloadResponse->isOk());
         if (array_key_exists('error', $responseData)) {
-            $this->assertEquals($responseData['error'], $actualPayloadResponse->getError());
-            $this->assertIsString($actualPayloadResponse->getErrorExplanation());
+            self::assertEquals($responseData['error'], $actualPayloadResponse->getError());
+            self::assertIsString($actualPayloadResponse->getErrorExplanation());
         }
         $this->assertResponse($responseData, $actualPayloadResponse);
     }

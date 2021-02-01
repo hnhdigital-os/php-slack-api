@@ -39,6 +39,6 @@ class ChannelsJoinPayloadResponseTest extends AbstractPayloadResponseTestCase
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
         $this->assertChannel($responseData['channel'], $payloadResponse->getChannel());
-        $this->assertEquals($responseData['already_in_channel'], $payloadResponse->isAlreadyInChannel());
+        self::assertEquals($responseData['already_in_channel'], $payloadResponse->isAlreadyInChannel());
     }
 }

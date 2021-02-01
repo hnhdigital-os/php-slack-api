@@ -13,11 +13,12 @@ namespace CL\Slack\Tests\Payload;
 
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Serializer\PayloadSerializer;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractPayloadTestCase extends \PHPUnit\Framework\TestCase
+abstract class AbstractPayloadTestCase extends TestCase
 {
     /**
      * @var PayloadSerializer
@@ -36,13 +37,13 @@ abstract class AbstractPayloadTestCase extends \PHPUnit\Framework\TestCase
     {
         $payload = $this->createPayload();
 
-        $this->assertIsString($payload->getMethod());
-        $this->assertTrue(class_exists($payload->getResponseClass()));
+        self::assertIsString($payload->getMethod());
+        self::assertTrue(class_exists($payload->getResponseClass()));
 
         $expectedPayloadSerialized = json_encode($this->getExpectedPayloadData($payload));
         $actualPayloadSerialized = json_encode($this->payloadSerializer->serialize($payload));
 
-        $this->assertEquals(
+        self::assertEquals(
             json_decode($expectedPayloadSerialized, true),
             json_decode($actualPayloadSerialized, true)
         );

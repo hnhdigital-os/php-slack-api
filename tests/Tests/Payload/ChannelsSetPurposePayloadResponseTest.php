@@ -37,6 +37,6 @@ class ChannelsSetPurposePayloadResponseTest extends AbstractPayloadResponseTestC
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['purpose'], $payloadResponse->getPurpose());
+        self::assertEquals($responseData['purpose'], $payloadResponse->getPurpose());
     }
 }

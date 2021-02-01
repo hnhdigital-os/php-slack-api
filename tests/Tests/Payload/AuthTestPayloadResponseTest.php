@@ -41,10 +41,10 @@ class AuthTestPayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($payloadResponse->getUserId(), $responseData['user_id']);
-        $this->assertEquals($payloadResponse->getUsername(), $responseData['user']);
-        $this->assertEquals($payloadResponse->getTeamId(), $responseData['team_id']);
-        $this->assertEquals($payloadResponse->getTeam(), $responseData['team']);
-        $this->assertEquals($payloadResponse->getUrl(), $responseData['url']);
+        self::assertEquals($payloadResponse->getUserId(), $responseData['user_id']);
+        self::assertEquals($payloadResponse->getUsername(), $responseData['user']);
+        self::assertEquals($payloadResponse->getTeamId(), $responseData['team_id']);
+        self::assertEquals($payloadResponse->getTeam(), $responseData['team']);
+        self::assertEquals($payloadResponse->getUrl(), $responseData['url']);
     }
 }

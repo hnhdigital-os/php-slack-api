@@ -73,9 +73,9 @@ class SimpleMessage extends AbstractModel
     {
         return $this->type;
     }
-    
+
     /**
-     * @return null|string The subtype of message
+     * @return string|null The subtype of message
      */
     public function getSubtype()
     {
@@ -125,7 +125,7 @@ class SimpleMessage extends AbstractModel
     }
 
     /**
-     * @return boolean wether or not this message has attachments
+     * @return bool wether or not this message has attachments
      */
     public function hasAttachments()
     {

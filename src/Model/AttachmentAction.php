@@ -20,7 +20,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class AttachmentAction extends AbstractModel
 {
-
     const TYPE_BUTTON = 'button';
 
     const STYLE_DEFAULT = 'default';

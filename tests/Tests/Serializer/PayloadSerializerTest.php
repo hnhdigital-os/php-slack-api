@@ -13,11 +13,12 @@ namespace CL\Slack\Tests\Serializer;
 
 use CL\Slack\Serializer\PayloadSerializer;
 use CL\Slack\Test\Payload\PayloadMock;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class PayloadSerializerTest extends \PHPUnit\Framework\TestCase
+class PayloadSerializerTest extends TestCase
 {
     /**
      * @var PayloadSerializer
@@ -39,8 +40,8 @@ class PayloadSerializerTest extends \PHPUnit\Framework\TestCase
 
         $serializedPayload = $this->payloadSerializer->serialize($payload);
 
-        $this->assertIsArray($serializedPayload);
-        $this->assertArrayHasKey('fruit', $serializedPayload);
-        $this->assertEquals($payload->getFruit(), $serializedPayload['fruit']);
+        self::assertIsArray($serializedPayload);
+        self::assertArrayHasKey('fruit', $serializedPayload);
+        self::assertEquals($payload->getFruit(), $serializedPayload['fruit']);
     }
 }

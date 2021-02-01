@@ -27,7 +27,6 @@ use CL\Slack\Model\StarredItem;
 use CL\Slack\Model\Team;
 use CL\Slack\Model\User;
 use CL\Slack\Model\UserProfile;
-use PHPUnit\Framework\Assert as Assert;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
@@ -58,7 +57,7 @@ trait ModelTrait
      */
     protected function assertMessage(array $expected, Message $actual)
     {
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'channel' => $this->createSimpleChannel(),
             'ts' => $actual->getSlackTimestamp(),
             'type' => $actual->getType(),
@@ -120,11 +119,11 @@ trait ModelTrait
      */
     protected function assertSimpleMessage(array $expected, SimpleMessage $actual)
     {
-        Assert::assertEquals($expected['type'], $actual->getType());
-        Assert::assertEquals($expected['ts'], $actual->getSlackTimestamp());
-        Assert::assertEquals($expected['user'], $actual->getUserId());
-        Assert::assertEquals($expected['text'], $actual->getText());
-        Assert::assertEquals($expected['username'], $actual->getUsername());
+        self::assertEquals($expected['type'], $actual->getType());
+        self::assertEquals($expected['ts'], $actual->getSlackTimestamp());
+        self::assertEquals($expected['user'], $actual->getUserId());
+        self::assertEquals($expected['text'], $actual->getText());
+        self::assertEquals($expected['username'], $actual->getUsername());
     }
 
     /**
@@ -159,11 +158,11 @@ trait ModelTrait
         $this->assertSimpleMessage($expected['latest'], $actual->getLatest());
         $this->assertCustomizable($expected['purpose'], $actual->getPurpose());
         $this->assertCustomizable($expected['topic'], $actual->getTopic());
-        Assert::assertInstanceOf('\DateTime', $actual->getCreated());
+        self::assertInstanceOf(\DateTime::class, $actual->getCreated());
         unset($expected['latest']);
         unset($expected['purpose']);
         unset($expected['topic']);
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'id' => $actual->getId(),
             'created' => $actual->getCreated()->format('U'),
             'creator' => $actual->getCreator(),
@@ -194,7 +193,7 @@ trait ModelTrait
      */
     protected function assertSimpleChannel(array $expected, SimpleChannel $actual)
     {
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'id' => $actual->getId(),
             'created' => $actual->getCreated()->format('U'),
             'creator' => $actual->getCreator(),
@@ -235,11 +234,11 @@ trait ModelTrait
         $this->assertMessage($expected['latest'], $actual->getLatest());
         $this->assertCustomizable($expected['purpose'], $actual->getPurpose());
         $this->assertCustomizable($expected['topic'], $actual->getTopic());
-        Assert::assertInstanceOf('\DateTime', $actual->getCreated());
+        self::assertInstanceOf(\DateTime::class, $actual->getCreated());
         unset($expected['latest']);
         unset($expected['purpose']);
         unset($expected['topic']);
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'id' => $actual->getId(),
             'created' => $actual->getCreated()->format('U'),
             'creator' => $actual->getCreator(),
@@ -269,7 +268,7 @@ trait ModelTrait
      */
     protected function assertGroupWithState(array $expected, GroupWithState $actual)
     {
-        Assert::assertEquals($expected['is_open'], $actual->isOpen());
+        self::assertEquals($expected['is_open'], $actual->isOpen());
         unset($expected['is_open']);
         $this->assertGroup($expected, $actual);
     }
@@ -336,10 +335,10 @@ trait ModelTrait
      */
     protected function assertFile(array $expected, File $actual)
     {
-        $this->assertNotEmpty($expected);
+        self::assertNotEmpty($expected);
 
-        Assert::assertInstanceOf('CL\Slack\Model\File', $actual);
-        Assert::assertEquals($expected, [
+        self::assertInstanceOf(\CL\Slack\Model\File::class, $actual);
+        self::assertEquals($expected, [
             'id' => $actual->getId(),
             'timestamp' => $actual->getTimestamp()->format('U'),
             'name' => $actual->getName(),
@@ -431,7 +430,7 @@ trait ModelTrait
      */
     protected function assertPaging(array $expected, Paging $actual)
     {
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'count' => $actual->getCount(),
             'total' => $actual->getTotal(),
             'page' => $actual->getPage(),
@@ -458,7 +457,7 @@ trait ModelTrait
      */
     protected function assertCustomizable(array $expected, Customizable $actual)
     {
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'value' => $actual->getValue(),
             'type' => $actual->getType(),
             'creator' => $actual->getCreator(),
@@ -489,7 +488,7 @@ trait ModelTrait
         $this->assertFile($expected['file'], $actual->getFile());
         unset($expected['file']);
 
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'type' => $actual->getType(),
             'comment' => $actual->getComment(),
         ]);
@@ -523,7 +522,7 @@ trait ModelTrait
         $this->assertUserProfile($expected['profile'], $actual->getProfile());
         unset($expected['profile']);
 
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'id' => $actual->getId(),
             'name' => $actual->getName(),
             'color' => $actual->getColor(),
@@ -562,7 +561,7 @@ trait ModelTrait
      */
     protected function assertUserProfile(array $expected, UserProfile $actual)
     {
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'first_name' => $actual->getFirstName(),
             'last_name' => $actual->getLastName(),
             'real_name' => $actual->getRealName(),
@@ -604,7 +603,7 @@ trait ModelTrait
      */
     protected function assertTeam(array $expected, Team $actual)
     {
-        $this->assertEquals($expected, [
+        self::assertEquals($expected, [
             'id' => $actual->getId(),
             'name' => $actual->getName(),
             'domain' => $actual->getDomain(),
@@ -640,7 +639,7 @@ trait ModelTrait
      */
     protected function assertImChannel(array $expected, ImChannel $actual)
     {
-        Assert::assertEquals($expected, [
+        self::assertEquals($expected, [
             'id' => $actual->getId(),
             'is_im' => $actual->isIm(),
             'is_user_deleted' => $actual->isUserDeleted(),

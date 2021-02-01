@@ -41,7 +41,7 @@ class ImListPayloadResponseTest extends AbstractPayloadResponseTestCase
     {
         $channels = $payloadResponse->getImChannels();
 
-        $this->assertCount(1, $channels);
+        self::assertCount(1, $channels);
 
         foreach ($channels as $x => $channel) {
             $this->assertImChannel($responseData['ims'][$x], $channel);

@@ -38,7 +38,7 @@ class ChatPostMessagePayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['channel'], $payloadResponse->getChannelId());
-        $this->assertEquals($responseData['ts'], $payloadResponse->getTs());
+        self::assertEquals($responseData['channel'], $payloadResponse->getChannelId());
+        self::assertEquals($responseData['ts'], $payloadResponse->getTs());
     }
 }

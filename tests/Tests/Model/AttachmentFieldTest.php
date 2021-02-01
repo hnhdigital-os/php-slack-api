@@ -46,8 +46,8 @@ class AttachmentFieldTest extends AbstractModelTest
      */
     protected function assertModel(array $expectedData, AbstractModel $actualModel)
     {
-        $this->assertEquals($expectedData['title'], $actualModel->getTitle());
-        $this->assertEquals($expectedData['value'], $actualModel->getValue());
-        $this->assertEquals($expectedData['short'], $actualModel->isShort());
+        self::assertEquals($expectedData['title'], $actualModel->getTitle());
+        self::assertEquals($expectedData['value'], $actualModel->getValue());
+        self::assertEquals($expectedData['short'], $actualModel->isShort());
     }
 }

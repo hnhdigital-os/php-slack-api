@@ -14,11 +14,12 @@ namespace CL\Slack\Tests\Payload;
 use CL\Slack\Payload\PayloadResponseInterface;
 use CL\Slack\Serializer\PayloadResponseSerializer;
 use CL\Slack\Test\Model\ModelTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractPayloadResponseTestCase extends \PHPUnit\Framework\TestCase
+abstract class AbstractPayloadResponseTestCase extends TestCase
 {
     use ModelTrait;
 
@@ -45,9 +46,9 @@ abstract class AbstractPayloadResponseTestCase extends \PHPUnit\Framework\TestCa
             $this->getResponseClass()
         );
 
-        $this->assertInstanceOf('CL\Slack\Payload\PayloadResponseInterface', $actualPayloadResponse);
-        $this->assertInstanceOf($this->getResponseClass(), $actualPayloadResponse);
-        $this->assertTrue($actualPayloadResponse->isOk());
+        self::assertInstanceOf(\CL\Slack\Payload\PayloadResponseInterface::class, $actualPayloadResponse);
+        self::assertInstanceOf($this->getResponseClass(), $actualPayloadResponse);
+        self::assertTrue($actualPayloadResponse->isOk());
         $this->assertResponse($responseData, $actualPayloadResponse);
     }
 
@@ -65,7 +66,7 @@ abstract class AbstractPayloadResponseTestCase extends \PHPUnit\Framework\TestCa
                 $this->getResponseClass()
             );
 
-            $this->assertSame($explanation, $actualPayloadResponse->getErrorExplanation());
+            self::assertSame($explanation, $actualPayloadResponse->getErrorExplanation());
         }
     }
 

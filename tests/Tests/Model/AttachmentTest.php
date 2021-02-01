@@ -54,12 +54,12 @@ class AttachmentTest extends AbstractModelTest
      */
     protected function assertModel(array $expectedData, AbstractModel $actualModel)
     {
-        $this->assertEquals($expectedData['color'], $actualModel->getColor());
-        $this->assertEquals($expectedData['fallback'], $actualModel->getFallback());
-        $this->assertEquals($expectedData['pretext'], $actualModel->getPretext());
-        $this->assertEquals($expectedData['text'], $actualModel->getText());
-        $this->assertEquals($expectedData['fields'][0]['title'], $actualModel->getFields()->first()->getTitle());
-        $this->assertEquals($expectedData['fields'][0]['value'], $actualModel->getFields()->first()->getValue());
-        $this->assertEquals($expectedData['fields'][0]['short'], $actualModel->getFields()->first()->isShort());
+        self::assertEquals($expectedData['color'], $actualModel->getColor());
+        self::assertEquals($expectedData['fallback'], $actualModel->getFallback());
+        self::assertEquals($expectedData['pretext'], $actualModel->getPretext());
+        self::assertEquals($expectedData['text'], $actualModel->getText());
+        self::assertEquals($expectedData['fields'][0]['title'], $actualModel->getFields()->first()->getTitle());
+        self::assertEquals($expectedData['fields'][0]['value'], $actualModel->getFields()->first()->getValue());
+        self::assertEquals($expectedData['fields'][0]['short'], $actualModel->getFields()->first()->isShort());
     }
 }

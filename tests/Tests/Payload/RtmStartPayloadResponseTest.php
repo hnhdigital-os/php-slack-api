@@ -11,8 +11,8 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\RtmStartPayloadResponse;
 use CL\Slack\Payload\PayloadResponseInterface;
+use CL\Slack\Payload\RtmStartPayloadResponse;
 
 /**
  * @author Travis Raup <info@travisraup.com>
@@ -37,6 +37,6 @@ class RtmStartPayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['url'], $payloadResponse->getUrl());
+        self::assertEquals($responseData['url'], $payloadResponse->getUrl());
     }
 }

@@ -38,7 +38,7 @@ class OauthAccessPayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['access_token'], $payloadResponse->getAccessToken());
-        $this->assertEquals($responseData['scope'], $payloadResponse->getScope());
+        self::assertEquals($responseData['access_token'], $payloadResponse->getAccessToken());
+        self::assertEquals($responseData['scope'], $payloadResponse->getScope());
     }
 }

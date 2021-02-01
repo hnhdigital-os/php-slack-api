@@ -37,6 +37,6 @@ class GroupsSetPurposePayloadResponseTest extends AbstractPayloadResponseTestCas
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['purpose'], $payloadResponse->getPurpose());
+        self::assertEquals($responseData['purpose'], $payloadResponse->getPurpose());
     }
 }

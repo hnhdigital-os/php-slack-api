@@ -11,8 +11,8 @@
 
 namespace CL\Slack\Tests\Payload;
 
-use CL\Slack\Payload\RtmStartPayload;
 use CL\Slack\Payload\PayloadInterface;
+use CL\Slack\Payload\RtmStartPayload;
 
 /**
  * @author Travis Raup <info@travisraup.com>

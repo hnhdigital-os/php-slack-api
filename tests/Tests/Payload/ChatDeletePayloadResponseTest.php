@@ -38,7 +38,7 @@ class ChatDeletePayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['channel'], $payloadResponse->getChannelId());
-        $this->assertEquals($responseData['ts'], $payloadResponse->getSlackTimestamp());
+        self::assertEquals($responseData['channel'], $payloadResponse->getChannelId());
+        self::assertEquals($responseData['ts'], $payloadResponse->getSlackTimestamp());
     }
 }

@@ -41,7 +41,7 @@ class GroupsListPayloadResponseTest extends AbstractPayloadResponseTestCase
     {
         $channels = $payloadResponse->getGroups();
 
-        $this->assertCount(1, $channels);
+        self::assertCount(1, $channels);
 
         foreach ($channels as $x => $channel) {
             $this->assertGroup($responseData['groups'][$x], $channel);

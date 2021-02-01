@@ -15,11 +15,12 @@ use CL\Slack\Model\AbstractModel;
 use CL\Slack\Test\Model\ModelTrait;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-abstract class AbstractModelTest extends \PHPUnit\Framework\TestCase
+abstract class AbstractModelTest extends TestCase
 {
     use ModelTrait;
 
@@ -52,8 +53,8 @@ abstract class AbstractModelTest extends \PHPUnit\Framework\TestCase
             'json'
         );
 
-        $this->assertInstanceOf($modelClass, $model);
-        $this->assertInstanceOf('CL\Slack\Model\AbstractModel', $model);
+        self::assertInstanceOf($modelClass, $model);
+        self::assertInstanceOf(\CL\Slack\Model\AbstractModel::class, $model);
 
         $this->assertModel($modelData, $model);
     }

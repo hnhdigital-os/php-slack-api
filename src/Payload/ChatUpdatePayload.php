@@ -94,7 +94,7 @@ class ChatUpdatePayload extends AbstractPayload implements AdvancedSerializeInte
 
     /**
      * Channel (ID only!) containing the message to be updated.
-     * 
+     *
      * @param string $channel
      *
      * @return ChatUpdatePayload
@@ -116,7 +116,7 @@ class ChatUpdatePayload extends AbstractPayload implements AdvancedSerializeInte
 
     /**
      * New text for the message, using the default formatting rules.
-     * 
+     *
      * @param string $text
      *
      * @return ChatUpdatePayload
@@ -179,8 +179,8 @@ class ChatUpdatePayload extends AbstractPayload implements AdvancedSerializeInte
     }
 
     /**
-     * Change how messages are treated. Defaults to client, unlike chat.postMessage. 
-     * 
+     * Change how messages are treated. Defaults to client, unlike chat.postMessage.
+     *
      * @param string $parse
      *
      * @return ChatUpdatePayload
@@ -206,7 +206,7 @@ class ChatUpdatePayload extends AbstractPayload implements AdvancedSerializeInte
      * Find and link channel names and usernames. Defaults to none.
      * This parameter should be used in conjunction with parse.
      * To set link_names to 1, specify a parse mode of full.
-     * 
+     *
      * @param bool $linkNames
      *
      * @return ChatUpdatePayload

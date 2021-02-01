@@ -13,7 +13,6 @@ namespace CL\Slack\Transport\Events;
 
 use Symfony\Contracts\EventDispatcher\Event;
 
-
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */

@@ -13,11 +13,12 @@ namespace CL\Slack\Tests\Serializer;
 
 use CL\Slack\Serializer\PayloadResponseSerializer;
 use CL\Slack\Test\Payload\MockPayloadResponse;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class PayloadResponseSerializerTest extends \PHPUnit\Framework\TestCase
+class PayloadResponseSerializerTest extends TestCase
 {
     /**
      * @var PayloadResponseSerializer
@@ -46,9 +47,9 @@ class PayloadResponseSerializerTest extends \PHPUnit\Framework\TestCase
             $mockResponseClass
         );
 
-        $this->assertInstanceOf($mockResponseClass, $serializedPayload);
-        $this->assertTrue($serializedPayload->isOk());
-        $this->assertNull($serializedPayload->getError());
-        $this->assertNull($serializedPayload->getErrorExplanation());
+        self::assertInstanceOf($mockResponseClass, $serializedPayload);
+        self::assertTrue($serializedPayload->isOk());
+        self::assertNull($serializedPayload->getError());
+        self::assertNull($serializedPayload->getErrorExplanation());
     }
 }

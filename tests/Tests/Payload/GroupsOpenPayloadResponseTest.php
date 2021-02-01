@@ -38,7 +38,7 @@ class GroupsOpenPayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
-        $this->assertEquals($responseData['already_open'], $payloadResponse->isAlreadyOpen());
+        self::assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
+        self::assertEquals($responseData['already_open'], $payloadResponse->isAlreadyOpen());
     }
 }

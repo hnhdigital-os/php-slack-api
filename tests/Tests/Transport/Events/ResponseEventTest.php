@@ -12,11 +12,12 @@
 namespace CL\Slack\Tests\Transport\Events;
 
 use CL\Slack\Transport\Events\ResponseEvent;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ResponseEventTest extends \PHPUnit\Framework\TestCase
+class ResponseEventTest extends TestCase
 {
     /**
      * @test
@@ -27,6 +28,6 @@ class ResponseEventTest extends \PHPUnit\Framework\TestCase
         $event = new ResponseEvent($expectedPayloadResponse);
         $actualPayloadResponse = $event->getRawPayloadResponse();
 
-        $this->assertEquals($expectedPayloadResponse, $actualPayloadResponse);
+        self::assertEquals($expectedPayloadResponse, $actualPayloadResponse);
     }
 }

@@ -11,6 +11,7 @@
 
 namespace CL\Slack\Tests\Transport;
 
+use CL\Slack\Exception\SlackException;
 use CL\Slack\Payload\PayloadInterface;
 use CL\Slack\Test\Payload\PayloadMock;
 use CL\Slack\Transport\ApiClient;
@@ -22,12 +23,12 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
 use Mockery as Mock;
-use CL\Slack\Exception\SlackException;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class ApiClientTest extends \PHPUnit\Framework\TestCase
+class ApiClientTest extends TestCase
 {
     /**
      * @test
@@ -75,23 +76,22 @@ class ApiClientTest extends \PHPUnit\Framework\TestCase
         parse_str($transaction['request']->getBody(), $requestBody);
         $responseBody = json_decode($transaction['response']->getBody(), true);
 
-        $this->assertEquals(ApiClient::API_BASE_URL . 'mock', $requestUrl);
-        $this->assertEquals('application/x-www-form-urlencoded', $requestContentType);
-        $this->assertEquals($mockRequestData, $requestBody);
-        $this->assertEquals($mockResponseData, $responseBody);
+        self::assertEquals(ApiClient::API_BASE_URL . 'mock', $requestUrl);
+        self::assertEquals('application/x-www-form-urlencoded', $requestContentType);
+        self::assertEquals($mockRequestData, $requestBody);
+        self::assertEquals($mockResponseData, $responseBody);
 
-        $this->assertArrayHasKey(ApiClient::EVENT_REQUEST, $eventsDispatched);
-        $this->assertArrayHasKey(ApiClient::EVENT_RESPONSE, $eventsDispatched);
+        self::assertArrayHasKey(ApiClient::EVENT_REQUEST, $eventsDispatched);
+        self::assertArrayHasKey(ApiClient::EVENT_RESPONSE, $eventsDispatched);
     }
 
     /**
      * @test
-     *
      */
     public function it_can_not_send_a_payload_without_a_token()
     {
         $this->expectException(SlackException::class);
-        $this->expectExceptionMessage("You must supply a token to send a payload, since you did not provide one during construction");
+        $this->expectExceptionMessage('You must supply a token to send a payload, since you did not provide one during construction');
         /* @var PayloadInterface|Mock\MockInterface $mockPayload */
         $mockPayload = Mock::mock(PayloadInterface::class);
 

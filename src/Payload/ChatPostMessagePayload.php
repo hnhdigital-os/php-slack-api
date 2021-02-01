@@ -151,7 +151,7 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
     }
 
     /**
-     * Change how messages are treated. Defaults to none. 
+     * Change how messages are treated. Defaults to none.
      *
      * @param string $parse full, none
      *
@@ -262,7 +262,7 @@ class ChatPostMessagePayload extends AbstractPayload implements AdvancedSerializ
      * Pass false to disable unfurling of media content.
      *
      * @param bool $unfurlMedia
-     * 
+     *
      * @see https://api.slack.com/docs/unfurling
      */
     public function setUnfurlMedia($unfurlMedia)

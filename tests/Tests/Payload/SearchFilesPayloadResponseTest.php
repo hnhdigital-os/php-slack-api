@@ -39,8 +39,8 @@ class SearchFilesPayloadResponseTest extends AbstractPayloadResponseTestCase
     {
         $fileResult = $payloadResponse->getResult();
 
-        $this->assertInstanceOf('CL\Slack\Model\FileResult', $fileResult);
-        $this->assertCount(1, $fileResult->getMatches());
+        self::assertInstanceOf(\CL\Slack\Model\FileResult::class, $fileResult);
+        self::assertCount(1, $fileResult->getMatches());
 
         foreach ($fileResult->getMatches() as $x => $match) {
             $this->assertFileResultItem($responseData['files']['matches'][$x], $match);
