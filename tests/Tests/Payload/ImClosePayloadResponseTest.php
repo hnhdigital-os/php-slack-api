@@ -38,7 +38,7 @@ class ImClosePayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
-        $this->assertEquals($responseData['already_closed'], $payloadResponse->isAlreadyClosed());
+        self::assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
+        self::assertEquals($responseData['already_closed'], $payloadResponse->isAlreadyClosed());
     }
 }

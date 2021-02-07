@@ -37,6 +37,6 @@ class ChannelsLeavePayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['not_in_channel'], $payloadResponse->isNotInChannel());
+        self::assertEquals($responseData['not_in_channel'], $payloadResponse->isNotInChannel());
     }
 }

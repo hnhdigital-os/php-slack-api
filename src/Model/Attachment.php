@@ -86,7 +86,7 @@ class Attachment extends AbstractModel
     private $actions;
 
     /**
-     * @var Array
+     * @var array
      */
     private $mrkdwnIn;
 
@@ -320,7 +320,7 @@ class Attachment extends AbstractModel
     }
 
     /**
-     * @return Array Valid values for mrkdwn_in are: ["pretext", "text", "fields"]. Setting "fields" will enable markup formatting for the value of each field
+     * @return array Valid values for mrkdwn_in are: ["pretext", "text", "fields"]. Setting "fields" will enable markup formatting for the value of each field
      */
     public function getMrkdwnIn()
     {

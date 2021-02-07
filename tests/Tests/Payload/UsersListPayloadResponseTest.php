@@ -41,7 +41,7 @@ class UsersListPayloadResponseTest extends AbstractPayloadResponseTestCase
     {
         $users = $payloadResponse->getUsers();
 
-        $this->assertCount(1, $users);
+        self::assertCount(1, $users);
 
         foreach ($users as $x => $user) {
             $this->assertUser($responseData['members'][$x], $user);

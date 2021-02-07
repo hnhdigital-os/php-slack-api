@@ -47,7 +47,7 @@ class ChannelsHistoryPayloadResponseTest extends AbstractPayloadResponseTestCase
     {
         $messages = $payloadResponse->getMessages();
 
-        $this->assertCount(1, $messages);
+        self::assertCount(1, $messages);
 
         foreach ($messages as $x => $message) {
             $this->assertSimpleMessage($responseData['messages'][$x], $message);

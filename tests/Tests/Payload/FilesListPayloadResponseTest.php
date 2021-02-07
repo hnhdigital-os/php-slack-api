@@ -41,7 +41,7 @@ class FilesListPayloadResponseTest extends AbstractPayloadResponseTestCase
     {
         $files = $payloadResponse->getFiles();
 
-        $this->assertCount(1, $files);
+        self::assertCount(1, $files);
 
         foreach ($files as $x => $file) {
             $this->assertFile($responseData['files'][$x], $file);

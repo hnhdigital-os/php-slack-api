@@ -46,8 +46,8 @@ class CustomizableTest extends AbstractModelTest
      */
     protected function assertModel(array $expectedData, AbstractModel $actualModel)
     {
-        $this->assertEquals($expectedData['value'], $actualModel->getValue());
-        $this->assertEquals($expectedData['last_set'], $actualModel->getLastSet()->format('U'));
-        $this->assertEquals($expectedData['creator'], $actualModel->getCreator());
+        self::assertEquals($expectedData['value'], $actualModel->getValue());
+        self::assertEquals($expectedData['last_set'], $actualModel->getLastSet()->format('U'));
+        self::assertEquals($expectedData['creator'], $actualModel->getCreator());
     }
 }

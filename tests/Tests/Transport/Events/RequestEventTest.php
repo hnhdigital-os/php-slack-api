@@ -13,11 +13,12 @@ namespace CL\Slack\Tests\Transport\Events;
 
 use CL\Slack\Test\Model\ModelTrait;
 use CL\Slack\Transport\Events\RequestEvent;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @author Cas Leentfaar <info@casleentfaar.com>
  */
-class RequestEventTest extends \PHPUnit\Framework\TestCase
+class RequestEventTest extends TestCase
 {
     use ModelTrait;
 
@@ -30,6 +31,6 @@ class RequestEventTest extends \PHPUnit\Framework\TestCase
         $event = new RequestEvent($expectedPayload);
         $actualPayload = $event->getRawPayload();
 
-        $this->assertEquals($expectedPayload, $actualPayload);
+        self::assertEquals($expectedPayload, $actualPayload);
     }
 }

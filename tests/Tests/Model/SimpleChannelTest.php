@@ -49,11 +49,11 @@ class SimpleChannelTest extends AbstractModelTest
      */
     protected function assertModel(array $expectedData, AbstractModel $actualModel)
     {
-        $this->assertEquals($expectedData['id'], $actualModel->getId());
-        $this->assertEquals($expectedData['name'], $actualModel->getName());
-        $this->assertEquals($expectedData['created'], $actualModel->getCreated()->format('U'));
-        $this->assertEquals($expectedData['creator'], $actualModel->getCreator());
-        $this->assertEquals($expectedData['is_archived'], $actualModel->isArchived());
-        $this->assertEquals($expectedData['is_general'], $actualModel->isGeneral());
+        self::assertEquals($expectedData['id'], $actualModel->getId());
+        self::assertEquals($expectedData['name'], $actualModel->getName());
+        self::assertEquals($expectedData['created'], $actualModel->getCreated()->format('U'));
+        self::assertEquals($expectedData['creator'], $actualModel->getCreator());
+        self::assertEquals($expectedData['is_archived'], $actualModel->isArchived());
+        self::assertEquals($expectedData['is_general'], $actualModel->isGeneral());
     }
 }

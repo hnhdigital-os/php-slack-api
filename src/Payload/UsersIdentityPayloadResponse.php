@@ -65,7 +65,7 @@ class UsersIdentityPayloadResponse extends AbstractPayloadResponse
      */
     public function getUserAvatar($size)
     {
-        return isset($this->user['image_'.$size]) ? $this->user['image_'.$size] : '';
+        return isset($this->user['image_' . $size]) ? $this->user['image_' . $size] : '';
     }
 
     /**

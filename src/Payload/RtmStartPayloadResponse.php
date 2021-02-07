@@ -21,7 +21,7 @@ class RtmStartPayloadResponse extends AbstractPayloadResponse
      */
     private $url;
 
-	/**
+    /**
      * @return string
      */
     public function getUrl()

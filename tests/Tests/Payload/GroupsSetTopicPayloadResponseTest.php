@@ -37,6 +37,6 @@ class GroupsSetTopicPayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['topic'], $payloadResponse->getTopic());
+        self::assertEquals($responseData['topic'], $payloadResponse->getTopic());
     }
 }

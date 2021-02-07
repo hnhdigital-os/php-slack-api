@@ -37,7 +37,7 @@ class TeamInfoPayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertInstanceOf('CL\Slack\Model\Team', $payloadResponse->getTeam());
+        self::assertInstanceOf(\CL\Slack\Model\Team::class, $payloadResponse->getTeam());
         $this->assertTeam($responseData['team'], $payloadResponse->getTeam());
     }
 }

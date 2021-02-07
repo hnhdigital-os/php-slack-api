@@ -41,7 +41,7 @@ class ChannelsListPayloadResponseTest extends AbstractPayloadResponseTestCase
     {
         $channels = $payloadResponse->getChannels();
 
-        $this->assertCount(1, $channels);
+        self::assertCount(1, $channels);
 
         foreach ($channels as $x => $channel) {
             $this->assertChannel($responseData['channels'][$x], $channel);

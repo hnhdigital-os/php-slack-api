@@ -40,6 +40,6 @@ class EmojiListPayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['emoji'], $payloadResponse->getEmojis());
+        self::assertEquals($responseData['emoji'], $payloadResponse->getEmojis());
     }
 }

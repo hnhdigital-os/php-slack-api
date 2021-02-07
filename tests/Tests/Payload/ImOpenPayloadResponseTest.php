@@ -39,8 +39,8 @@ class ImOpenPayloadResponseTest extends AbstractPayloadResponseTestCase
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
-        $this->assertEquals($responseData['already_open'], $payloadResponse->isAlreadyOpen());
-        $this->assertEquals($responseData['channel'], $payloadResponse->getChannel());
+        self::assertEquals($responseData['no_op'], $payloadResponse->isNoOp());
+        self::assertEquals($responseData['already_open'], $payloadResponse->isAlreadyOpen());
+        self::assertEquals($responseData['channel'], $payloadResponse->getChannel());
     }
 }

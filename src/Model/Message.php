@@ -86,7 +86,7 @@ class Message extends SimpleMessage
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getPermalink()
     {

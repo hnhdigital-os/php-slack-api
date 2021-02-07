@@ -22,7 +22,7 @@ abstract class AbstractPayloadResponse implements PayloadResponseInterface
      */
     public function isOk()
     {
-        return (bool) $this->ok;
+        return (bool)$this->ok;
     }
 
     /**

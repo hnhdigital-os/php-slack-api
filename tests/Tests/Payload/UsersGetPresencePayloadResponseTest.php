@@ -37,6 +37,6 @@ class UsersGetPresencePayloadResponseTest extends AbstractPayloadResponseTestCas
      */
     protected function assertResponse(array $responseData, PayloadResponseInterface $payloadResponse)
     {
-        $this->assertEquals($responseData['presence'], $payloadResponse->getPresence());
+        self::assertEquals($responseData['presence'], $payloadResponse->getPresence());
     }
 }
